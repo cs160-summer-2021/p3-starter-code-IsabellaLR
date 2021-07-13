@@ -8,6 +8,13 @@
 
 	<script type="text/javascript" src="{% static 'coloring/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'coloring/vendors/paper/paper-full.min.js' %}"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
 
 	<style type="text/css">
 		#color-palette {
@@ -24,6 +31,16 @@
 			height: 60px;
 			width: 100%;
 
+		}
+
+		.heading {
+			font-family: 'Raleway', sans-serif;
+			padding: 50px;
+			font-size: 20px;
+		}
+
+		.subheading {
+			font-family: 'Roboto', sans-serif;
 		}
 
 		.lefticons{
@@ -142,13 +159,30 @@
 				<img style = "height: 30px;" src= "{% static 'coloring/images/settings.png' %}">
 			</div>
 	</div>
-	<div class = "row" style = "height: 400px;"> 
-	<img style = "height: 300px" src= "{% static 'coloring/images/penguin.png' %}">
-
+	<div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;"> 
+			<img style = "height: 300px" src= "{% static 'coloring/images/penguin.png' %}">
 	</div> 
+	<div class = "row" style = "background-color: #EBF5FF; height: 500px;"> 
+		<div class = "row" style = "height: 50px;">
+			<div class = "col-1 heading">COLORS</div> 
+		</div>
+		<div class = "row">
+			<div class = "col-6 heading" style = "height: 0px; padding-left: 150px; padding-top: 80px; font-size: 18px;">‏‏‎SHADES</div> 
+		</div>
+		<div class = "row" style = "height: 50px;">
+			<div class = "col-1 heading">SHADOWS</div> 
+		</div>
+		<div class = "row" style = "height: 90px;">
+			<div class = "col-1 heading">GRAIN</div> 
+		</div>
+		<div class = "row" style = "height: 50px;">
+			<div class = "col-1 heading">RECENT COLORS</div> 
+		</div>
+
+	</div>
 
 
 	<!-- <canvas id="myCanvas" width="750px" height="750px"></canvas> -->
-	<div id="color-palette"></div>
+	<!-- <div id="color-palette"></div> -->
 </body>
 </html>
