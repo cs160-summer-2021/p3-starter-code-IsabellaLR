@@ -59,6 +59,21 @@
 			margin: 3px;
 		}
 
+		.hr {
+			border-top: 2px solid #1B83CF;
+			margin-left: 50px;
+			margin-right: 140px;
+
+		}
+
+		.thinhr {
+			border-top: 1px solid #1B83CF;
+			margin-left: 142px;
+			margin-right: 140px;
+			
+
+		}
+
 		#myCanvas {
 			padding-left: 0;
 		    padding-right: 0;
@@ -162,21 +177,24 @@
 	<div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;"> 
 			<img style = "height: 300px" src= "{% static 'coloring/images/penguin.png' %}">
 	</div> 
-	<div class = "row" style = "background-color: #EBF5FF; height: 500px;"> 
+	<div class = "row" style = "background-color: #EBF5FF; height: 460px;"> 
 		<div class = "row" style = "height: 50px;">
-			<div class = "col-1 heading">COLORS</div> 
+			<div class = "col-1 heading" style = "padding-bottom: 30px;">COLORS</div> 
+			<hr class = "thinhr">
 		</div>
 		<div class = "row">
-			<div class = "col-6 heading" style = "height: 0px; padding-left: 150px; padding-top: 80px; font-size: 18px;">‏‏‎SHADES</div> 
+			<div class = "col-6 heading" style = "height: 0px; padding-left: 150px; margin-top: 30px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES</div>
+			<hr class = "thinhr"> 
 		</div>
-		<div class = "row" style = "height: 50px;">
+		<div class = "row" style = "height: 30px;">
 			<div class = "col-1 heading">SHADOWS</div> 
 		</div>
-		<div class = "row" style = "height: 90px;">
+		<div class = "row" style = "height: 70px; margin-bottom: 40px; margin-top: 10px">
 			<div class = "col-1 heading">GRAIN</div> 
 		</div>
-		<div class = "row" style = "height: 50px;">
-			<div class = "col-1 heading">RECENT COLORS</div> 
+		<hr class = "hr">
+		<div class = "row" style = "height: 30px;">
+			<div class = "col-1 heading" style = "padding: 25px 50px 50px;">RECENT COLORS</div> 
 		</div>
 
 	</div>
