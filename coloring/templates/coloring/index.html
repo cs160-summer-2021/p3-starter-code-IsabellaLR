@@ -36,7 +36,7 @@
         }
 
         #recent-colors {
-            width: 50vh;
+            width: 100vh;
             background-color: #a12e2e;
             display: flex;
             flex-wrap: wrap;
@@ -225,23 +225,21 @@
                 for (var percent = 30; percent > -40; percent-=10) {
                     var $shades = $("<div>").css("background-color", colorShade(rgb, percent))
                                        .addClass("shades");
+					$shades.click(function(){
+						// add color to the color palette history
+					  	cp.history.push($(this).css("background-color"));
+					});
                     sp.$container.append($shades);
-                }      
+                }
             }
-
 
             function addToRecent(color){
                 var $swatch = $("<div>").css("background-color", color)
                                        .addClass("swatch");
-                console.log(rc.$container.children.length);
                 var count = rc.$container.children().length;
                 if (count > 9){
-                    alert("greater than 9")
-                    // console.log("GREATER THAN 9");
-                    // var $firstswatch = $("<div>").css("background-color", cp.history[0])
-                    //                    .addClass("swatch");
-                    var firstEl = rc.$container.first
-                    rc.$container.remove(firstEl);
+                    var firstEl = rc.$container.children().first();
+					firstEl.remove();
                 }
                 rc.$container.append($swatch);
             }
@@ -302,11 +300,26 @@
                 return "#"+RR+GG+BB;
             }
 
+			//not done
+			function shadowSliderChange(){
+				var slider = document.getElementById("myRange");
+				slider.oninput = function() {
+					var rgb = cp.history[cp.history.length - 1].replace(/[^\d,]/g, '').split(',');
+					var $shades = $("<div>").css("background-color", 'rgba(rgb[0], rgb[1], rgb[2], 0.5)')
+                                       .addClass("shades");
+					// var $swatch = $("<div>").css("background-color", satColor)
+					// 				   .addClass("swatch");
+					// cp.history.push($swatch.css("background-color"));
+					// showShades($shades);
+				}
+			}
+
 			function init(custom){
 				paper.setup(canvas);
 				getColorsCreatePalette();
 				getColorsCreateShades();
 				getColorsCreateRecent();
+				shadowSliderChange();
 
 				paper.project.importSVG(mandala.filePath, function(item) {
 					mandala.item = item._children["design-freepik"];
@@ -340,7 +353,8 @@
 			</div>
 	</div>
 	<div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;"> 
-			<img style = "height: 300px" src= "{% static 'coloring/images/penguin.PNG' %}">
+		<canvas id="myCanvas" width="750px" height="750px"></canvas>
+			<!-- <img style = "height: 300px" src= "{% static 'coloring/images/penguin.PNG' %}"> -->
 	</div> 
 
 
@@ -386,8 +400,6 @@
     	<div id="recent-colors"></div>
 	</div>
 
-
-	<!-- <canvas id="myCanvas" width="750px" height="750px"></canvas> -->
 	<!-- <div id="color-palette"></div> -->
 </body>
 </html>
