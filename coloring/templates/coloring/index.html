@@ -18,13 +18,31 @@
 
 	<style type="text/css">
 		#color-palette {
-			width: 300px;
-			background-color: #f1f1f1;
+			width: 50vh;
+			background-color: #8d2828;
 			display: flex;
 			flex-wrap: wrap;
 			position: absolute;
 			top: 0;
 		}
+
+		#shade-palette {
+            width: 70vh;
+            background-color: #cac264;
+            display: flex;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 10;
+        }
+
+        #recent-colors {
+            width: 50vh;
+            background-color: #a12e2e;
+            display: flex;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 100;
+        }
 
 		.header {
 			background-color: #1B83CF;
@@ -51,12 +69,21 @@
 		}
 
 		.swatch {
-			width: 24px;
-			height: 24px;
-			-moz-border-radius: 12px;
-			-webkit-border-radius: 12px;
-			border-radius: 12px;
-			margin: 3px;
+			width: 3vh;
+			height: 3vh;
+			/* -moz-border-radius: 24px;
+			-webkit-border-radius: 24px;
+			border-radius: 24px; */
+			margin: 2vh;
+		}
+
+		.shades {
+			width: 3vh;
+			height: 3vh;
+			-moz-border-radius: 1.5vh;
+			-webkit-border-radius: 1.5vh;
+			border-radius: 1.5vh;
+			margin: 2vh;
 		}
 
 		.hr {
@@ -81,7 +108,6 @@
 
 		}
 			
-
 		#myCanvas {
 			padding-left: 0;
 		    padding-right: 0;
@@ -167,6 +193,18 @@
 				$container: $('#color-palette')
 			}
 
+			var sp = {
+                history: [],
+                options: [],
+                $container: $('#shade-palette')
+            }
+
+            var rc = {
+                history: ["#000000"],
+                options: [],
+                $container: $('#recent-colors')
+            }
+
 			function myCustomInteraction() {
 				var tool = new paper.Tool();
 
@@ -176,9 +214,37 @@
 				    		// Color pallette keeps track of the full history of colors, though we
 				    		// only color in with the most-recent color.
 				        hit.item.fillColor = cp.history[cp.history.length - 1];
+						addToRecent(cp.history[cp.history.length - 1])
 				    }
 				}
 			}
+
+			function showShades(color){
+                var rgb = color.replace(/[^\d,]/g, '').split(',');
+				sp.$container.html(" ");
+                for (var percent = 30; percent > -40; percent-=10) {
+                    var $shades = $("<div>").css("background-color", colorShade(rgb, percent))
+                                       .addClass("shades");
+                    sp.$container.append($shades);
+                }      
+            }
+
+
+            function addToRecent(color){
+                var $swatch = $("<div>").css("background-color", color)
+                                       .addClass("swatch");
+                console.log(rc.$container.children.length);
+                var count = rc.$container.children().length;
+                if (count > 9){
+                    alert("greater than 9")
+                    // console.log("GREATER THAN 9");
+                    // var $firstswatch = $("<div>").css("background-color", cp.history[0])
+                    //                    .addClass("swatch");
+                    var firstEl = rc.$container.first
+                    rc.$container.remove(firstEl);
+                }
+                rc.$container.append($swatch);
+            }
 
 			// create a color palette with the given colors
 			function createColorPalette(colors){
@@ -190,6 +256,7 @@
 					$swatch.click(function(){
 						// add color to the color palette history
 					  	cp.history.push($(this).css("background-color"));
+						showShades(cp.history[cp.history.length - 1]);
 					});
 					cp.$container.append($swatch);
 				}
@@ -207,9 +274,39 @@
 				});
 			}
 
+			function getColorsCreateRecent(){
+                rc.$container.html(" ");
+            }
+
+            function getColorsCreateShades(){
+                sp.$container.html(" ");
+            }
+
+			function colorShade(rgb, percent){
+                var R = rgb[0]
+                var G = rgb[1]
+                var B = rgb[2]
+
+                R = parseInt(R * (100 + percent) / 100);
+                G = parseInt(G * (100 + percent) / 100);
+                B = parseInt(B * (100 + percent) / 100);
+
+                R = (R<255)?R:255;  
+                G = (G<255)?G:255;  
+                B = (B<255)?B:255;  
+
+                var RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
+                var GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
+                var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
+
+                return "#"+RR+GG+BB;
+            }
+
 			function init(custom){
 				paper.setup(canvas);
 				getColorsCreatePalette();
+				getColorsCreateShades();
+				getColorsCreateRecent();
 
 				paper.project.importSVG(mandala.filePath, function(item) {
 					mandala.item = item._children["design-freepik"];
@@ -243,7 +340,7 @@
 			</div>
 	</div>
 	<div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;"> 
-			<img style = "height: 300px" src= "{% static 'coloring/images/penguin.png' %}">
+			<img style = "height: 300px" src= "{% static 'coloring/images/penguin.PNG' %}">
 	</div> 
 
 
@@ -265,6 +362,7 @@
 		</div>
 		<div class = "row">
 			<div class = "col-6 heading" style = "height: 0px; padding-left: 150px; margin-top: 45px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES</div>
+			<div id="shade-palette"></div>
 			<hr class = "thinhr"> 
 		</div>
 		<div class = "row" style = "height: 30px;">
@@ -283,7 +381,9 @@
 		<div class = "row" style = "height: 30px;">
 			<div class = "col-1 heading" style = "display: inline-block; padding: 25px 50px 50px;">RECENT COLORS</div> 
 		</div>
-
+		<!-- not sure where to put these -->
+		<div id="color-palette"></div>
+    	<div id="recent-colors"></div>
 	</div>
 
 
