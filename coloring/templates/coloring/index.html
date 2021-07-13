@@ -66,13 +66,21 @@
 
 		}
 
+		.colorbox {
+			height: 35px;
+			width: 35px;
+			text-shadow: 2px 2px;
+			margin-left: 32px;
+			display: inline-block;
+		}
+
 		.thinhr {
 			border-top: 1px solid #1B83CF;
 			margin-left: 142px;
 			margin-right: 140px;
-			
 
 		}
+			
 
 		#myCanvas {
 			padding-left: 0;
@@ -80,9 +88,65 @@
 		    margin-left: auto;
 		    margin-right: auto;
 		    display: block;
-
-
 		}
+
+/* Citation: https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+
+.slidecontainer {
+  width: 850px; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 850px; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #1B83CF; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.button {
+  background-color: #1B83CF;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 200px;
+  height: 35px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+
 	</style>
 
 	<script type="text/javascript" canvas="canvas">
@@ -166,31 +230,54 @@
 	</script>
 </head>
 <body style = "background-color: white;">
+
 	<div class = "header">
 			<div class = "lefticons" style = "padding-top: 10px; padding-left: 10px; padding-right: 10px; ">
 				<img style = "height: 28px" src= "{% static 'coloring/images/save.png' %}">
+				<div>‏‏‎ ‎</div>
 				<img style = "height: 30px;" src= "{% static 'coloring/images/share.png' %}">
+				<div>‏‏‎   ‏‏‎ ‎‎</div>
 				<img style = "height: 30px;" src= "{% static 'coloring/images/competition.png' %}">
+				<div>‏‏‎ ‏‏‎   ‎‎</div>
 				<img style = "height: 30px;" src= "{% static 'coloring/images/settings.png' %}">
 			</div>
 	</div>
 	<div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;"> 
 			<img style = "height: 300px" src= "{% static 'coloring/images/penguin.png' %}">
 	</div> 
+
+
 	<div class = "row" style = "background-color: #EBF5FF; height: 460px;"> 
 		<div class = "row" style = "height: 50px;">
-			<div class = "col-1 heading" style = "padding-bottom: 30px;">COLORS</div> 
+			<div class = "col-1 heading" style = "display: inline-block; padding-bottom: 30px;">COLORS ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
+			<div class = "colorbox" style = "background-color: #FF5C5C;">‏‏‎</div>
+			<div class = "colorbox" style = "background-color: #FFB52E;">‏‏‎‎‏‎</div>
+			<div class = "colorbox" style = "background-color: #fdfd5a;">‏‏‎</div>
+			<div class = "colorbox" style = "background-color: #00B700;">‏‏‎</div>
+			<div class = "colorbox" style = "background-color: #3232E5;">‏‏‎</div>
+			<div class = "colorbox" style = "background-color: #940494;">‏‏‎</div>
+			<div class = "colorbox" style = "background-color: #FF9EAF;">‏‏‎‎</div>
+			<div class = "colorbox" style = "background-color: #684211;">‏‏‎‎</div>
+			<div class = "colorbox" style = "background-color: #000000;">‏‏‎</div>
+			<button style = "margin-left: 40px; display: inline-block;" class="subheading button">+ C U S T O M</button>
+		</div>
 			<hr class = "thinhr">
 		</div>
 		<div class = "row">
-			<div class = "col-6 heading" style = "height: 0px; padding-left: 150px; margin-top: 30px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES</div>
+			<div class = "col-6 heading" style = "height: 0px; padding-left: 150px; margin-top: 45px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES</div>
 			<hr class = "thinhr"> 
 		</div>
 		<div class = "row" style = "height: 30px;">
-			<div class = "col-1 heading">SHADOWS</div> 
+			<div class = "col-1 heading" style = "display: inline-block;">SHADOWS</div>
+			<div class= "slidecontainer" style = "display: inline-block;">
+				<input style = "display: inline-block;" type="range" min="1" max="100" value="50" class="slider" id="myRange">
+			  </div> 
 		</div>
 		<div class = "row" style = "height: 70px; margin-bottom: 40px; margin-top: 10px">
-			<div class = "col-1 heading">GRAIN</div> 
+			<div class = "col-1 heading" style = "display: inline-block;">GRAIN</div> 
+			<div class= "slidecontainer" style = "margin-left: 38px; display: inline-block;">
+				<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+			  </div> 
 		</div>
 		<hr class = "hr">
 		<div class = "row" style = "height: 30px;">
