@@ -19,6 +19,20 @@
 			top: 0;
 		}
 
+		.header {
+			background-color: #1B83CF;
+			height: 60px;
+			width: 100%;
+
+		}
+
+		.lefticons{
+			display: flex; 
+			align-items: flex-end;
+			height: 30px;
+			justify-content: flex-end;
+		}
+
 		.swatch {
 			width: 24px;
 			height: 24px;
@@ -34,6 +48,8 @@
 		    margin-left: auto;
 		    margin-right: auto;
 		    display: block;
+
+
 		}
 	</style>
 
@@ -117,9 +133,22 @@
 		}
 	</script>
 </head>
-<body>
+<body style = "background-color: white;">
+	<div class = "header">
+			<div class = "lefticons" style = "padding-top: 10px; padding-left: 10px; padding-right: 10px; ">
+				<img style = "height: 28px" src= "{% static 'coloring/images/save.png' %}">
+				<img style = "height: 30px;" src= "{% static 'coloring/images/share.png' %}">
+				<img style = "height: 30px;" src= "{% static 'coloring/images/competition.png' %}">
+				<img style = "height: 30px;" src= "{% static 'coloring/images/settings.png' %}">
+			</div>
+	</div>
+	<div class = "row" style = "height: 400px;"> 
+	<img style = "height: 300px" src= "{% static 'coloring/images/penguin.png' %}">
 
-	<canvas id="myCanvas" width="750px" height="750px"></canvas>
+	</div> 
+
+
+	<!-- <canvas id="myCanvas" width="750px" height="750px"></canvas> -->
 	<div id="color-palette"></div>
 </body>
 </html>
