@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'coloring/vendors/bootstrap/css/bootstrap.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'coloring/css/style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		.heading {
+			font-family: 'Raleway', sans-serif;
+			padding: 15px;
+			font-size: 20px;
+            color: white;
+		}
+
+        .subheading {
+			font-family: 'Roboto', sans-serif;
+		}
+
+        .header {
+			background-color: #1B83CF;
+			height: 60px;
+			width: 100%;
+
+		}
+
+
+		.lefticons{
+			display: flex; 
+			align-items: flex-end;
+			height: 30px;
+			justify-content: flex-end;
+		}
+	
+	</style>
+
+</head>
+<body>
+	<body class="p-0 h-100" style="background-color: white;">
+		<!-- Your layout here -->
+        <div class = "row header">
+            <div class="heading col-4 text-center" style = "background-color: #176FAE;">
+                LIBRARY
+            </div>
+            <div class="heading col-4 text-center">
+                SOCIAL
+            </div>
+            <div class="heading col-4 text-center">
+                PERSONAL
+            </div>
+        </div>
+        <div class = "row align-items-center" style = "height: 300px;">
+        <div class = "col-4"></div>
+        <div class = "col-4 heading" style = "color:black; font-size: 27px; display: inline-block;">PAINTING TEMPLATES <br>
+        <div class = "subheading" style = "color:black; padding-left: 59px; font-size: 14px; display: inline-block;">Select a template to color. </div>
+        </div>
+        <div class = "col-4"></div>
+        </div>
+
+    <div class = "container-fluid">
+        <div class = "row" style = "height: 80px; background-color: #EBF5FF;">
+            <div class = "offset-7"></div>
+            <div class = "heading col-2" style = "color:black; margin-top: 5px; font-size: 18px;">‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎  ‎‏‏‎ ‎ ‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎ ‎‏‏‎ ‎SORT BY</div>
+            <div class = "subheading col-2" style = "text-align:center;border: 2px solid black; margin-top: 20px; color: black; background-color: white; height: 30px; width: 0px;"> T‏‏‎ ‎O‏‏‎ ‎P‏‏‎ ‎I‏‏‎ ‎C ‏‏‎ ‏‏‎ ‎‎▾ </div>
+            <div class = "col-1"></div>
+        </div>
+
+        <div class = "row" style = "height: 60px; background-color: #EBF5FF;">
+            <div class = "offset-1"></div>
+            <div class = "heading col-11" style = "color:black;font-size: 18px;">‏‏‎POPULAR</div>
+        </div>
+
+        <div class = "row align-items-center" style = "padding-left: 100px; height: 300px; background-color: #EBF5FF;">
+            <div class = "col-4">
+                <div style = "display: inline-block; margin-right: 30px;">◀</div>
+                <img style = "display: inline-block; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/pop3.png' %}">
+            </div>
+            <div class = "col-4">
+                <img style = "box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/pop4.png' %}">
+            </div>
+            <div class = "col-4">
+                <img style = "display: inline-block; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/mandala.png' %}">
+                <div style = "display: inline-block; margin-left: 30px;">▶</div>
+            </div>      
+        </div>
+
+        <div class = "row" style = "height: 100px; background-color: #EBF5FF;">
+            <div class = "offset-1"></div>
+            <div class = "heading col-11" style = "padding-top: 50px; color:black;font-size: 18px;">‏‏‎NATURE</div>
+        </div>
+
+        <div class = "row align-items-center" style = "padding-left: 100px; height: 300px; background-color: #EBF5FF;">
+            <div class = "col-4">
+                <div style = "display: inline-block; margin-right: 30px;">◀</div>
+                <img style = "display: inline-block; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/nature1.jpg' %}">
+            </div>
+            <div class = "col-4">
+                <img style = "box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/nature2.png' %}">
+            </div>
+            <div class = "col-4">
+                <img style = "display: inline-block; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/nature3.png' %}">
+                <div style = "display: inline-block; margin-left: 30px;">▶</div>
+            </div>      
+        </div>
+
+
+    </div>
+
+	</body>
+</body>
+</html>
