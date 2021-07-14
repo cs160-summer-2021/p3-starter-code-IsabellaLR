@@ -29,7 +29,7 @@
 
 		#shade-palette {
             width: 50vh;
-           	background-color: #EBF5FF;
+           	background-color: #cbe5ff;
            	display: flex;
             flex-wrap: wrap;
             position: absolute;
@@ -48,7 +48,7 @@
 
 		.header {
 			background-color: #1B83CF;
-			height: 55px;
+			height: 60px;
 			width: 100%;
 
 		}
@@ -79,7 +79,7 @@
 			margin: 2vh;
 		}
 
-		.shades {
+		.shade {
 			width: 3vh;
 			height: 3vh;
 			-moz-border-radius: 1.5vh;
@@ -232,55 +232,61 @@
 			}
 
 			var sp = {
-                history: [],
-                options: [],
-                $container: $('#shade-palette')
-            }
+				history: [],
+				options: [],
+				$container: $('#shade-palette')
+			}
 
-            var rc = {
-                history: ["#000000"],
-                options: [],
-                $container: $('#recent-colors')
-            }
+			var rc = {
+				history: ["#000000"],
+				options: [],
+				$container: $('#recent-colors')
+			}
 
 			function myCustomInteraction() {
 				var tool = new paper.Tool();
 
 				tool.onMouseDown = function (event) {
-				    var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
-				    if (hit) {
-				    		// Color pallette keeps track of the full history of colors, though we
-				    		// only color in with the most-recent color.
-				        hit.item.fillColor = cp.history[cp.history.length - 1];
+					var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
+					if (hit) {
+							// Color pallette keeps track of the full history of colors, though we
+							// only color in with the most-recent color.
+						hit.item.fillColor = cp.history[cp.history.length - 1];
 						addToRecent(cp.history[cp.history.length - 1])
-				    }
+					}
 				}
 			}
 
-			function showShades(color){
-                var rgb = color.replace(/[^\d,]/g, '').split(',');
+			function showShades(color, alpha){
+				var rgb = color.replace(/[^\d,]/g, '').split(',');
 				sp.$container.html(" ");
-                for (var percent = 30; percent > -40; percent-=10) {
-                    var $shades = $("<div>").css("background-color", colorShade(rgb, percent))
-                                       .addClass("shades");
-					$shades.click(function(){
+				for (var percent = 30; percent > -40; percent-=10) {
+					newrgb = colorShade(rgb, percent);
+					var $shade = $("<div>").css("background-color", 'rgba(' + newrgb[0] + ', ' + newrgb[1] + ', ' + newrgb[2] + ', ' + alpha + ')')
+									.addClass("shade");
+					$shade.click(function(){
 						// add color to the color palette history
-					  	cp.history.push($(this).css("background-color"));
+						cp.history.push($(this).css("background-color"));
 					});
-                    sp.$container.append($shades);
-                }
-            }
+					sp.$container.append($shade);
+				}
+			}
 
-            function addToRecent(color){
-                var $swatch = $("<div>").css("background-color", color)
-                                       .addClass("swatch");
-                var count = rc.$container.children().length;
-                if (count > 9){
-                    var firstEl = rc.$container.children().first();
+			function addToRecent(color){
+				var $swatch = $("<div>").css("background-color", color)
+									.addClass("swatch");
+				var count = rc.$container.children().length;
+				if (count > 9){
+					var firstEl = rc.$container.children().first();
 					firstEl.remove();
-                }
-                rc.$container.append($swatch);
-            }
+				}
+				rc.$container.append($swatch);
+				$swatch.click(function(){
+					// add color to the color palette history
+					cp.history.push($(this).css("background-color"));
+					showShades(cp.history[cp.history.length - 1], 1);
+				});
+			}
 
 			// create a color palette with the given colors
 			function createColorPalette(colors){
@@ -288,11 +294,11 @@
 				// create a swatch for each color
 				for (var i = colors.length - 1; i >= 0; i--) {
 					var $swatch = $("<div>").css("background-color", colors[i])
-									   .addClass("swatch");
+									.addClass("swatch");
 					$swatch.click(function(){
 						// add color to the color palette history
-					  	cp.history.push($(this).css("background-color"));
-						showShades(cp.history[cp.history.length - 1]);
+						cp.history.push($(this).css("background-color"));
+						showShades(cp.history[cp.history.length - 1], 1);
 					});
 					cp.$container.append($swatch);
 				}
@@ -311,44 +317,61 @@
 			}
 
 			function getColorsCreateRecent(){
-                rc.$container.html(" ");
-            }
+				rc.$container.html(" ");
+			}
 
-            function getColorsCreateShades(){
-                sp.$container.html(" ");
-            }
+			function getColorsCreateShades(){
+				sp.$container.html(" ");
+			}
 
 			function colorShade(rgb, percent){
-                var R = rgb[0]
-                var G = rgb[1]
-                var B = rgb[2]
+				var R = rgb[0]
+				var G = rgb[1]
+				var B = rgb[2]
 
-                R = parseInt(R * (100 + percent) / 100);
-                G = parseInt(G * (100 + percent) / 100);
-                B = parseInt(B * (100 + percent) / 100);
+				R = parseInt(R * (100 + percent) / 100);
+				G = parseInt(G * (100 + percent) / 100);
+				B = parseInt(B * (100 + percent) / 100);
 
-                R = (R<255)?R:255;  
-                G = (G<255)?G:255;  
-                B = (B<255)?B:255;  
+				R = (R<255)?R:255;  
+				G = (G<255)?G:255;  
+				B = (B<255)?B:255;  
 
-                var RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
-                var GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
-                var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
+				return [R, G, B]
+			}
 
-                return "#"+RR+GG+BB;
-            }
-
-			//not done
-			function shadowSliderChange(){
-				var slider = document.getElementById("myRange");
+			function opacitySliderChange(){
+				var slider = document.getElementById("myOpacityRange");
 				slider.oninput = function() {
-					var rgb = cp.history[cp.history.length - 1].replace(/[^\d,]/g, '').split(',');
-					var $shades = $("<div>").css("background-color", 'rgba(rgb[0], rgb[1], rgb[2], 0.5)')
-                                       .addClass("shades");
-					// var $swatch = $("<div>").css("background-color", satColor)
-					// 				   .addClass("swatch");
-					// cp.history.push($swatch.css("background-color"));
-					// showShades($shades);
+					var color = cp.history[cp.history.length - 1];
+					var $shade = $("<div>").css("background-color", color)
+									.addClass("shade");
+					showShades($shade.css("background-color"), slider.value/100);
+				}
+			}
+
+			//still doing
+			function shadowSliderChange(){
+				var slider = document.getElementById("myShadowRange");
+				slider.oninput = function() {
+					var color = cp.history[cp.history.length - 1];
+					var rgb = color.replace(/[^\d,]/g, '').split(',');
+					//not sure how to change radial gradient in css
+					var $shade = $("<div>").css("background", 'radial-gradient(cyan 40%, transparent 50%, salmon 40%)').addClass("shade");
+					showShades($shade.css("background"), 1);
+				}
+			}
+
+			function colorPickerChange(){
+				// Get the value return by color picker
+				var color = document.getElementById('colorPicker')
+				color.oninput = function() {
+					console.log(color.value);
+					// rgb = hexToRgb(color.value);
+					var $swatch = $("<div>").css("background-color", color.value).addClass("swatch");
+					cp.history.push($swatch.css("background-color"));
+					var $shade = $("<div>").css("background-color", color.value).addClass("shade");
+					showShades($shade.css("background-color"), 1);
 				}
 			}
 
@@ -357,17 +380,19 @@
 				getColorsCreatePalette();
 				getColorsCreateShades();
 				getColorsCreateRecent();
+				opacitySliderChange();
 				shadowSliderChange();
+				colorPickerChange();
 
 				paper.project.importSVG(mandala.filePath, function(item) {
 					mandala.item = item._children["design-freepik"];
-				    paper.project.insertLayer(0,mandala.item);
+					paper.project.insertLayer(0,mandala.item);
 
-				    if (custom) {
-				    	myCustomInteraction();
-				    } else {
-				    	myGradientInteraction();
-				    }
+					if (custom) {
+						myCustomInteraction();
+					} else {
+						myGradientInteraction();
+					}
 
 				});
 			}
@@ -420,13 +445,13 @@
 		<div class = "row" style = "height: 30px;">
 			<div class = "col-1 heading" style = "display: inline-block;">SHADOWS</div>
 			<div class= "slidecontainer" style = "display: inline-block;">
-				<input style = "display: inline-block;" type="range" min="1" max="100" value="50" class="slider" id="myRange">
+				<input style = "display: inline-block;" type="range" min="1" max="100" value="50" class="slider" id="myShadowRange">
 			  </div> 
 		</div>
 		<div class = "row" style = "height: 70px; margin-bottom: 40px; margin-top: 10px">
-			<div class = "col-1 heading" style = "display: inline-block;">GRAIN</div> 
+			<div class = "col-1 heading" style = "display: inline-block;">OPACITY</div> 
 			<div class= "slidecontainer" style = "margin-left: 38px; display: inline-block;">
-				<input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+				<input type="range" min="1" max="100" value="50" class="slider" id="myOpacityRange">
 			  </div> 
 		</div>
 		<hr class = "hr">
@@ -435,7 +460,7 @@
 			<div style = "padding-top: 10px; display: inline-flex" id="recent-colors"></div>
 		</div>
 		<!-- not sure where to put these -->
-    	<!-- <div id="recent-colors"></div> -->
+    	<div id="recent-colors"></div>
 	</div>
 
 	<div class = "subheading button" style = "margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div>
