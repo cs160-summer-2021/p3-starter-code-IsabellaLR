@@ -305,6 +305,7 @@
 					$swatch.click(function(){
 						// add color to the color palette history
 						cp.history.push($(this).css("background-color"));
+						sp.history.push($(this).css("background-color"));
 						showShades(cp.history[cp.history.length - 1], 1);
 					});
 					cp.$container.append($swatch);
@@ -350,23 +351,38 @@
 			function opacitySliderChange(){
 				var slider = document.getElementById("myOpacityRange");
 				slider.oninput = function() {
-					var color = cp.history[cp.history.length - 1];
+					var color = sp.history[sp.history.length - 1];
 					var $shade = $("<div>").css("background-color", color)
 									.addClass("shade");
 					showShades($shade.css("background-color"), slider.value/100);
 				}
 			}
 
-			//still doing
-			function shadowSliderChange(){
-				var slider = document.getElementById("myShadowRange");
+			function brightnessSliderChange(){
+				var slider = document.getElementById("myBrightnessRange");
 				slider.oninput = function() {
-					var color = cp.history[cp.history.length - 1];
+					var color = sp.history[sp.history.length - 1];
 					var rgb = color.replace(/[^\d,]/g, '').split(',');
-					//not sure how to change radial gradient in css
-					var $shade = $("<div>").css("background", 'radial-gradient(cyan 40%, transparent 50%, salmon 40%)').addClass("shade");
-					showShades($shade.css("background"), 1);
+					var hex = rgb.map(function(x){             //For each array element
+						x = parseInt(x).toString(16);      //Convert to a base16 string
+						return (x.length==1) ? "0"+x : x;  //Add zero if we get only one character
+					})
+					hex = hex.join("");
+					var $shade = $("<div>").css("background-color", increase_brightness(hex, slider.value))
+									.addClass("shade");
+					showShades($shade.css("background-color"), 1);
 				}
+			}
+
+			function increase_brightness(hex, percent){
+				var r = parseInt(hex.substr(0, 2), 16),
+					g = parseInt(hex.substr(2, 2), 16),
+					b = parseInt(hex.substr(4, 2), 16);
+
+				return '#' +
+				((0|(1<<8) + r + (256 - r) * percent / 200).toString(16)).substr(1) +
+				((0|(1<<8) + g + (256 - g) * percent / 200).toString(16)).substr(1) +
+				((0|(1<<8) + b + (256 - b) * percent / 200).toString(16)).substr(1);
 			}
 
 			function colorPickerChange(){
@@ -378,6 +394,7 @@
 					var $swatch = $("<div>").css("background-color", color.value).addClass("swatch");
 					cp.history.push($swatch.css("background-color"));
 					var $shade = $("<div>").css("background-color", color.value).addClass("shade");
+					sp.history.push($shade.css("background-color"));
 					showShades($shade.css("background-color"), 1);
 				}
 			}
@@ -388,7 +405,7 @@
 				getColorsCreateShades();
 				getColorsCreateRecent();
 				opacitySliderChange();
-				shadowSliderChange();
+				brightnessSliderChange();
 				colorPickerChange();
 
 				paper.project.importSVG(mandala.filePath, function(item) {
@@ -454,9 +471,9 @@
 			<hr class = "thinhr"> 
 		</div>
 		<div class = "row" style = "height: 30px;">
-			<div class = "col-1 heading" style = "display: inline-block;">SHADOWS</div>
+			<div class = "col-1 heading" style = "display: inline-block;">BRIGHTNESS</div>
 			<div class= "slidecontainer" style = "display: inline-block;">
-				<input style = "display: inline-block;" type="range" min="1" max="100" value="50" class="slider" id="myShadowRange">
+				<input style = "display: inline-block;" type="range" min="1" max="100" value="50" class="slider" id="myBrightnessRange">
 			  </div> 
 		</div>
 		<div class = "row" style = "height: 70px; margin-bottom: 40px; margin-top: 10px">
