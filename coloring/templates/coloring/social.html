@@ -5,6 +5,39 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="{% static 'coloring/vendors/bootstrap/css/bootstrap.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'coloring/css/style.css' %}" />
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		.heading {
+			font-family: 'Raleway', sans-serif;
+			padding: 15px;
+			font-size: 20px;
+            color: white;
+		}
+
+        .subheading {
+			font-family: 'Roboto', sans-serif;
+		}
+
+        .header {
+			background-color: #1B83CF;
+			height: 60px;
+			width: 100%;
+
+		}
+
+
+		.lefticons{
+			display: flex; 
+			align-items: flex-end;
+			height: 30px;
+			justify-content: flex-end;
+		}
+	
+	</style>
 
 </head>
 <body>
@@ -12,68 +45,62 @@
 	<body class="p-0 h-100">
 		<!-- Your layout here -->
 		<div class="container-fluid h-100">
-			<div class="row" style="height: 5vh; background-color: #1B83CF;">
-				<div class="col-4 text-center">
-					LIBRARY
-				</div>
-				<div class="col-4 text-center">
-					SOCIAL
-				</div>
-				<div class="col-4 text-center">
-					PERSONAL
-				</div>
-			</div>
-			<div class="row" style="height: 30vh;">
-				<div class="col-12">
-					<div class="row" style="height: 15vh"></div>
-					<div class="row" style="height: 5vh">
-						<div class="col-12 text-center">
-							FEED
-						</div>
-					</div>
-					<div class="row" style="height: 5vh">
-						<div class="col-12 text-center">
-							Keep up with the latest artwork from popular users and your followings. 
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center" style="height: 65vh; background-color: #EBF5FF;">
+			<div class = "row header">
+            <div class="heading col-4 text-center" style = "background-color: #176FAE;">
+                LIBRARY
+            </div>
+            <div class="heading col-4 text-center">
+                SOCIAL
+            </div>
+            <div class="heading col-4 text-center">
+                PERSONAL
+            </div>
+        </div>
+			<div class = "row align-items-center" style = "height: 300px;">
+        <div class = "col-4"></div>
+        <div class = "col-4 heading" style = "color:black; font-size: 27px;display: inline-block;">‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎‏‏‎ ‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎‎FEED <br>
+        <div class = "subheading" style = "color:black; padding-left: 0px; font-size: 14px; display: inline-block;"> ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎  ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎‏‏‎ ‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎  ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‎‏‏‎ ‏‏‎ ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎  ‎‏‏‎‎‏‏‎ ‎‏‏‎‎‏‏ ‎‏‏‎  ‎‏‏‎‎‏‏‎ ‎‏‏‎‎‏‏‎ ‎‏‏‎ Select a template to color. </div>
+        </div>
+        <div class = "col-4"></div>
+        </div>
+			<div class="row justify-content-center" style="height: 100vh; background-color: #EBF5FF;">
 				<div class="col-9">
 					<div class="row" style="height: 5vh"></div>
 					<div class="row" style="height: 60vh">
 						<div class="col text-center">
-							<div class="row" style="height: 5vh; background-color: white;">
-								<div class="col-1 text-left">
-									<img src="{% static '/coloring/images/profilepic.PNG' %}" width="20"/>
+							<div class="row" style="height: 7vh; border: 1px solid rgb(189, 189, 189); background-color: white;">
+					
+								<div class="col-1 text-right">
+									<img style = "padding-top: 12px;" src="{% static '/coloring/images/profilepic.PNG' %}" width="20"/>
 								</div>
-								<div class="col-1 text-left">
+								<div style = "padding-top: 12px;" class="col-1">
 									isabella90
 								</div>
+								
 							</div>
 							<div class="row" style="height: 50v;">
-								<img src="{% static '/coloring/images/flower.PNG' %}" style="width: 100%; height: auto;">
+								<img src="{% static '/coloring/images/flower.PNG' %}" style="border: 1px solid rgb(189, 189, 189); width: 100%; height: auto;">
 							</div>
-							<div class="row" style="height: 5vh; background-color: white;">
-								<div class="col-1 text-left">
-									<img src="{% static '/coloring/images/redHeart.PNG' %}" width="20"/>
+							<div class="row" style="border: 1px solid rgb(189, 189, 189); height: 7vh; background-color: white;">
+								<div class="col-1 text-right">
+									<img style = "padding-top: 12px;" src="{% static '/coloring/images/redHeart.PNG' %}" width="20"/>
 								</div>
-								<div class="col-1 text-left">
+								<div style = "padding-top: 8px;" class="col-1 text-left">
 									23
 								</div>
 								<div class="col-1 text-left"></div>
-								<div class="col-1 text-left">
-									<img src="{% static '/coloring/images/comment.JPEG' %}" width="20"/>
+								<div class="col-1 text-center">
+									<img style = "padding-top: 12px;" src="{% static '/coloring/images/comment.JPEG' %}" width="20"/>
 								</div>
-								<div class="col-1 text-left">
+								<div style = "padding-top: 9px;" class="col-1 text-left">
 									0
 								</div>
-								<div class="col-4 text-left"></div>
-								<div class="col-2 text-left">
+								<div class="col-4 text-center"></div>
+								<div style = "padding-top: 9px;" class="col-2 text-left">
 									2 hrs ago
 								</div>
 								<div class="col-1 text-left">
-									<img src="{% static '/coloring/images/dots.JPEG' %}" width="20"/>
+									<img style = "padding-top: 12px;" src="{% static '/coloring/images/dots.JPEG' %}" width="20"/>
 								</div>
 							</div>
 						</div>
