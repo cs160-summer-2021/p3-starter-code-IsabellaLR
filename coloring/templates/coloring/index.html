@@ -28,7 +28,7 @@
 		}
 
 		#shade-palette {
-            width: 50vh;
+            width: 49vh;
            	background-color: #cbe5ff;
            	display: flex;
             flex-wrap: wrap;
@@ -58,6 +58,13 @@
 			padding: 50px;
 			font-size: 20px;
 		}
+
+		.heading {
+			font-family: 'Raleway', sans-serif;
+			padding: 50px;
+			font-size: 20px;
+		}
+
 
 		.subheading {
 			font-family: 'Roboto', sans-serif;
@@ -105,9 +112,9 @@
 
 		.thinhr {
 			border-top: 1px solid #1B83CF;
-			margin-left: 142px;
-			margin-right: 140px;
-
+			margin-left: 50px;
+			margin-right: 142px;
+			margin-bottom: 0px;
 		}
 			
 		#myCanvas {
@@ -160,16 +167,16 @@
 }
 
 .button {
-  background-color: #1B83CF;
+  background-color: #EBF5FF;
   border: none;
-  color: white;
+  color: black;
   padding: 10px 20px;
+  margin: 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  width: 200px;
+  width: 270px;
   height: 35px;
-  margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
 }
@@ -423,7 +430,7 @@
 	<!-- <div style = "in-line" -->
 		
 
-	<div class = "row" style = "background-color: #EBF5FF; height: 480px;"> 
+	<div class = "row" style = "background-color: #EBF5FF; height: 580px;"> 
 		<div class = "row" style = "height: 50px;">
 			<div class = "col-1 heading" style = "display: inline-block; padding-bottom: 30px;">COLORS ‏‏‎ ‎‏‏‎ ‎‏‏‎‎
 				<div id="color-palette"></div>
@@ -433,10 +440,13 @@
 		</div>
 		<div class = "row">
 			<div style = "height: 20px; background-color: #EBF5FF;"></div>
-			<div class = "col-6 heading" style = "text-align: center; display: inline-block; height: 0px; padding-left: 150px; margin-top: 40px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
-				<div style = "display: inline-flex;" id="shade-palette"></div>
+			<div class = "col-6 heading" style = "text-align: center; display: inline-block; height: 0px; margin-top: 55px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
+				<div style = "background-color: #EBF5FF; display: inline-flex;" id="shade-palette"></div>
 				<!-- <button style = "margin-left: 600px; display: inline-block;" class="subheading button">+ C U S T O M‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎C O L O R</button> -->
 				<!-- <div class = "button" style = "display: inline-flex; margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div> -->
+			</div>
+			<div class = "row" style = "background-color: #EBF5FF; height: 78px;">
+				<div class = "heading button" style = "background-color: #EBF5FF; font-size: 18px; margin-top: 30px;  display: inline-block;">‏‏‎ ‎‏‏‎CUSTOM COLOR<input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div>
 			</div>
 			<div style = "height: 20px; background-color: #EBF5FF;"></div>
  
@@ -450,7 +460,7 @@
 		</div>
 		<div class = "row" style = "height: 70px; margin-bottom: 40px; margin-top: 10px">
 			<div class = "col-1 heading" style = "display: inline-block;">OPACITY</div> 
-			<div class= "slidecontainer" style = "margin-left: 38px; display: inline-block;">
+			<div class= "slidecontainer" style = "margin-left: 18px; display: inline-block;">
 				<input type="range" min="1" max="100" value="50" class="slider" id="myOpacityRange">
 			  </div> 
 		</div>
@@ -462,8 +472,6 @@
 		<!-- not sure where to put these -->
     	<div id="recent-colors"></div>
 	</div>
-
-	<div class = "subheading button" style = "margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div>
 
 	<!-- <div id="color-palette"></div> -->
 </body>
