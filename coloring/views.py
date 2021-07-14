@@ -11,3 +11,6 @@ def competitions(request):
 
 def library(request):
     return render(request, 'coloring/library.html')
+
+def personal(request):
+    return render(request, 'coloring/personal.html')

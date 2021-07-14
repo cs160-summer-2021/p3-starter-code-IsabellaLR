@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'coloring/vendors/bootstrap/css/bootstrap.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'coloring/css/style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		.heading {
+			font-family: 'Raleway', sans-serif;
+			padding: 15px;
+			font-size: 20px;
+            color: white;
+		}
+
+        .subheading {
+			font-family: 'Roboto', sans-serif;
+		}
+
+        .header {
+			background-color: #1B83CF;
+			height: 60px;
+			width: 100%;
+
+		}
+
+
+		.lefticons{
+			display: flex; 
+			align-items: flex-end;
+			height: 30px;
+			justify-content: flex-end;
+		}
+	
+	</style>
+
+</head>
+<body>
+	<body class="p-0 h-100" style="background-color: white;">
+		<!-- Your layout here -->
+        <div class = "row header">
+            <div class="heading col-4 text-center">
+                LIBRARY
+            </div>
+            <div class="heading col-4 text-center">
+                SOCIAL
+            </div>
+            <div class="heading col-4 text-center" style = "background-color: #176FAE;">
+                PERSONAL
+            </div>
+        </div>
+        <div class = "row align-items-center" style = "padding-top: 80px;height: 100px;">
+        <div class = "offset-1"></div>
+        <img class = "col-1" src= "{% static 'coloring/images/pfp.png' %}"></img>
+        <div class = "subheading col-1" style = "font-size: 26px;">EmmaArt</div>
+        <img class = "col-1" src= "{% static 'coloring/images/thinedit.png' %}"></img>
+        </div>
+        <div class = "row">
+            <div class = "offset-2"></div>
+            <div class = "subheading col-5" style = "padding-top: 80px; padding-bottom: 80px; font-size: 20px;">34 Following ‏‏‎ ‎‏‏‎ ‎52 Followers</div>
+        </div>
+        </div>
+
+    <div class = "container-fluid">
+        <div class = "row" style = "height: 80px; background-color: #EBF5FF;">
+            <div class = "offset-1"></div>
+            <div class = "subheading col-2" style = "margin-left: 15px; margin-top: 30px; border: 2px solid rgb(209, 209, 209); height: 35px; color: white; font-size: 18px; background-color: #1B83CF;">‏‏‎ ‎‏‏‎  ‎‏‏‎  ‎‏‏‎ ‎‏‏‎  ‎‏‏‎   ‎‏‏‎ ‎‏‏‎   ‎‏‏‎ ‎‏‏‎  ‎‏‏‎ ‎‏‏‎    ‎‏‏‎ ‎‏‏‎  ‎‏‏‎ ‎‏‏‎ ‎‏‏‎  ‎‏‏‎‎A L L</div>
+            <div class = "subheading col-2" style = "margin-top: 30px;border: 2px solid rgb(209, 209, 209); height: 35px; color: black; font-size: 18px; background-color: white;">‏‏‎ ‎‏‏‎   ‎‏‏‎ ‎‏‏‎  ‎‏‏‎ ‎‏‏‎   ‎‏‏‎ ‎‏‏‎   ‎‏‏‎ ‎‏‏‎  ‎‏‏‎ P O S T E D</div>
+            <div class = "offset-1"></div>
+            <div class = "heading col-2" style = "margin-left: 100px; color:black; margin-top: 16px; font-size: 18px;">‏‏‎ ‎‏‏‎ ‎‏‏‎‏‏‎‏‏‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎  ‎‏‏‎ ‎ ‎‏‏‎ ‎‏‏‎ ‎ ‎‏‏‎ ‎‏‏‎ ‎SORT BY</div>
+            <div class = "subheading col-2" style = "text-align:center;border: 2px solid black; margin-top: 30px; color: black; background-color: white; height: 30px; width: 0px;"> R E C E N T ‏‏‎ ‏‏‎ ‎‎▾ </div>
+            <div class = "col-1"></div>
+        </div>
+
+        <div class = "row" style = "height: 60px; background-color: #EBF5FF;">
+            <div class = "offset-1"></div>
+        </div>
+
+        <div class = "row align-items-center" style = "padding-bottom: 70px; padding-left: 100px; height: 300px; background-color: #EBF5FF;">
+            <div class = "col-4">
+                <img style = "display: inline-block; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/post1.png' %}">
+            </div>
+            <div class = "col-4">
+                <img style = "box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/post2.png' %}">
+            </div>
+            <div class = "col-4">
+                <img style = "display: inline-block; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); width: 280px; height: 280px" src= "{% static 'coloring/images/post3.png' %}">
+            </div>      
+        </div>     
+        </div>
+
+
+    </div>
+
+	</body>
+</body>
+</html>
