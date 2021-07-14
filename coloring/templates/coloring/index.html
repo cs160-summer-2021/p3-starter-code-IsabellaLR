@@ -18,27 +18,29 @@
 
 	<style type="text/css">
 		#color-palette {
-			width: 50vh;
-			background-color: #8d2828;
+			width: 135vh;
+			background-color: #EBF5FF;
 			display: flex;
 			flex-wrap: wrap;
-			position: absolute;
+			/* position: absolute; */
+			display: inline-flex;
 			top: 0;
 		}
 
 		#shade-palette {
-            width: 70vh;
-            background-color: #cac264;
-            display: flex;
+            width: 50vh;
+           	background-color: #cbe5ff;
+           	display: flex;
             flex-wrap: wrap;
             position: absolute;
             top: 10;
+
         }
 
         #recent-colors {
-            width: 100vh;
-            background-color: #a12e2e;
-            display: flex;
+            width: 80vh;
+            background-color: #EBF5FF;
+            display: inline-flex;
             flex-wrap: wrap;
             position: absolute;
             top: 100;
@@ -171,6 +173,42 @@
   cursor: pointer;
   border-radius: 16px;
 }
+
+  /* note: add citation */
+  .body {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            font-size: 20px;
+        }
+          
+        .main {
+            height: 400px;
+            width: 250px;
+            background: #3A3A38;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-family: verdana;
+
+        }
+          
+        #colorPicker {
+            height: 28px;
+            width: 28px;
+            cursor: pointer;
+        }
+          
+        #box {
+            outline: none;
+            border-radius: 50px;
+            height: 40px;
+            width: 120px;
+            padding: 0 10px;
+        }
+
 
 
 	</style>
@@ -352,31 +390,31 @@
 				<img style = "height: 30px;" src= "{% static 'coloring/images/settings.png' %}">
 			</div>
 	</div>
-	<div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;"> 
+	<!-- <div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;">  -->
 		<canvas id="myCanvas" width="750px" height="750px"></canvas>
 			<!-- <img style = "height: 300px" src= "{% static 'coloring/images/penguin.PNG' %}"> -->
-	</div> 
+	<!-- </div>  -->
 
+	<!-- <div style = "in-line" -->
+		
 
 	<div class = "row" style = "background-color: #EBF5FF; height: 480px;"> 
 		<div class = "row" style = "height: 50px;">
-			<div class = "col-1 heading" style = "display: inline-block; padding-bottom: 30px;">COLORS ‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
-			<div class = "colorbox" style = "background-color: #FF5C5C;">‏‏‎</div>
-			<div class = "colorbox" style = "background-color: #FFB52E;">‏‏‎‎‏‎</div>
-			<div class = "colorbox" style = "background-color: #fdfd5a;">‏‏‎</div>
-			<div class = "colorbox" style = "background-color: #00B700;">‏‏‎</div>
-			<div class = "colorbox" style = "background-color: #3232E5;">‏‏‎</div>
-			<div class = "colorbox" style = "background-color: #940494;">‏‏‎</div>
-			<div class = "colorbox" style = "background-color: #FF9EAF;">‏‏‎‎</div>
-			<div class = "colorbox" style = "background-color: #684211;">‏‏‎‎</div>
-			<div class = "colorbox" style = "background-color: #000000;">‏‏‎</div>
-			<button style = "margin-left: 40px; display: inline-block;" class="subheading button">+ C U S T O M</button>
+			<div class = "col-1 heading" style = "display: inline-block; padding-bottom: 30px;">COLORS ‏‏‎ ‎‏‏‎ ‎‏‏‎‎
+				<div id="color-palette"></div>
+				<!-- <div class = "button" style = "margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div> -->
 		</div>
 			<hr class = "thinhr">
 		</div>
 		<div class = "row">
-			<div class = "col-6 heading" style = "height: 0px; padding-left: 150px; margin-top: 45px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES</div>
-			<div id="shade-palette"></div>
+			<div style = "height: 20px; background-color: #EBF5FF;"></div>
+			<div class = "col-6 heading" style = "text-align: center; display: inline-block; height: 0px; padding-left: 150px; margin-top: 40px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
+				<div style = "display: inline-flex;" id="shade-palette"></div>
+				<!-- <button style = "margin-left: 600px; display: inline-block;" class="subheading button">+ C U S T O M‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎C O L O R</button> -->
+				<!-- <div class = "button" style = "display: inline-flex; margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div> -->
+			</div>
+			<div style = "height: 20px; background-color: #EBF5FF;"></div>
+ 
 			<hr class = "thinhr"> 
 		</div>
 		<div class = "row" style = "height: 30px;">
@@ -393,12 +431,14 @@
 		</div>
 		<hr class = "hr">
 		<div class = "row" style = "height: 30px;">
-			<div class = "col-1 heading" style = "display: inline-block; padding: 25px 50px 50px;">RECENT COLORS</div> 
+			<div class = "col-1 heading" style = "display: inline-block; padding: 20px 50px 50px;">RECENT COLORS</div> 
+			<div style = "padding-top: 10px; display: inline-flex" id="recent-colors"></div>
 		</div>
 		<!-- not sure where to put these -->
-		<div id="color-palette"></div>
     	<div id="recent-colors"></div>
 	</div>
+
+	<div class = "subheading button" style = "margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div>
 
 	<!-- <div id="color-palette"></div> -->
 </body>
