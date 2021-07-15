@@ -188,7 +188,7 @@
   border-radius: 16px;
 }
 
-  /* note: add citation */
+  /* Citation: https://www.geeksforgeeks.org/how-to-create-hex-color-generator-using-html-css-and-javascript/ */
   .body {
             margin: 0;
             padding: 0;
@@ -223,7 +223,7 @@
             padding: 0 10px;
         }
 
-
+/*  */
 
 	</style>
 
@@ -487,8 +487,10 @@
 				<!-- <div class = "button" style = "display: inline-flex; margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div> -->
 			</div>
 			<div class = "row" style = "background-color: #EBF5FF; height: 78px;">
+				<!-- Citation: https://www.geeksforgeeks.org/how-to-create-hex-color-generator-using-html-css-and-javascript/ -->
 				<div class = "heading button" style = "background-color: #EBF5FF; font-size: 18px; margin-top: 30px;  display: inline-block;">‏‏‎ ‎‏‏‎CUSTOM COLOR<input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div>
 				<img id = "eraserButton" style = "height: 28px" src= "{% static 'coloring/images/eraser.png' %}">
+				<!--  -->
 			</div>
 			<div style = "height: 20px; background-color: #EBF5FF;"></div>
  
@@ -496,13 +498,17 @@
 		</div>
 		<div class = "row" style = "height: 30px;">
 			<div class = "col-1 heading" style = "display: inline-block;">BRIGHTNESS</div>
+			<!-- /* Citation: https://www.w3schools.com/howto/howto_js_rangeslider.asp */ -->
 			<div class= "slidecontainer" style = "display: inline-block;">
+				<!--  -->
 				<input style = "display: inline-block;" type="range" min="1" max="100" value="50" class="slider" id="myBrightnessRange">
 			  </div> 
 		</div>
 		<div class = "row" style = "height: 70px; margin-bottom: 40px; margin-top: 10px">
 			<div class = "col-1 heading" style = "display: inline-block;">OPACITY</div> 
+			<!--/* Citation: https://www.w3schools.com/howto/howto_js_rangeslider.asp */ -->
 			<div class= "slidecontainer" style = "margin-left: 42px; display: inline-block;">
+				<!--  -->
 				<input type="range" min="1" max="100" value="50" class="slider" id="myOpacityRange">
 			  </div> 
 		</div>
@@ -511,11 +517,8 @@
 			<div class = "col-1 heading" style = "display: inline-block; padding: 20px 50px 50px;">RECENT COLORS</div> 
 			<div style = "padding-top: 10px; display: inline-flex" id="recent-colors"></div>
 		</div>
-		<!-- not sure where to put these -->
     	<div id="recent-colors"></div>
 	</div>
 	</div>
-
-	<!-- <div id="color-palette"></div> -->
 </body>
 </html>
