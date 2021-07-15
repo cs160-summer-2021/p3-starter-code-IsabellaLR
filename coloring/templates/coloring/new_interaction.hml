@@ -8,26 +8,115 @@
 
 	<script type="text/javascript" src="{% static 'coloring/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'coloring/vendors/paper/paper-full.min.js' %}"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
 
 	<style type="text/css">
 		#color-palette {
-			width: 300px;
-			background-color: #f1f1f1;
+			width: 135vh;
+			background-color: #EBF5FF;
 			display: flex;
 			flex-wrap: wrap;
-			position: absolute;
+			/* position: absolute; */
+			display: inline-flex;
 			top: 0;
 		}
 
-		.swatch {
-			width: 24px;
-			height: 24px;
-			-moz-border-radius: 12px;
-			-webkit-border-radius: 12px;
-			border-radius: 12px;
-			margin: 3px;
+		#shade-palette {
+            width: 49vh;
+           	background-color: #cbe5ff;
+           	display: flex;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 10;
+
+        }
+
+        #recent-colors {
+            width: 80vh;
+            background-color: #EBF5FF;
+            display: inline-flex;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 100;
+        }
+
+		.header {
+			background-color: #1B83CF;
+			height: 60px;
+			width: 100%;
+
 		}
 
+		.heading {
+			font-family: 'Raleway', sans-serif;
+			padding: 50px;
+			font-size: 20px;
+		}
+
+		.heading {
+			font-family: 'Raleway', sans-serif;
+			padding: 50px;
+			font-size: 20px;
+		}
+
+
+		.subheading {
+			font-family: 'Roboto', sans-serif;
+		}
+
+		.lefticons{
+			display: flex; 
+			align-items: flex-end;
+			height: 30px;
+			justify-content: flex-end;
+		}
+
+		.swatch {
+			width: 3vh;
+			height: 3vh;
+			/* -moz-border-radius: 24px;
+			-webkit-border-radius: 24px;
+			border-radius: 24px; */
+			margin: 2vh;
+		}
+
+		.shade {
+			width: 3vh;
+			height: 3vh;
+			-moz-border-radius: 1.5vh;
+			-webkit-border-radius: 1.5vh;
+			border-radius: 1.5vh;
+			margin: 2vh;
+		}
+
+		.hr {
+			border-top: 2px solid #1B83CF;
+			margin-left: 50px;
+			margin-right: 140px;
+
+		}
+
+		.colorbox {
+			height: 35px;
+			width: 35px;
+			text-shadow: 2px 2px;
+			margin-left: 32px;
+			display: inline-block;
+		}
+
+		.thinhr {
+			border-top: 1px solid #1B83CF;
+			margin-left: 50px;
+			margin-right: 142px;
+			margin-bottom: 0px;
+		}
+			
 		#myCanvas {
 			padding-left: 0;
 		    padding-right: 0;
@@ -35,6 +124,100 @@
 		    margin-right: auto;
 		    display: block;
 		}
+
+/* Citation: https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+
+.slidecontainer {
+  width: 850px; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 850px; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #1B83CF; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.button {
+  background-color: #EBF5FF;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  margin: 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 270px;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+  /* note: add citation */
+  .body {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            font-size: 20px;
+        }
+          
+        .main {
+            height: 400px;
+            width: 250px;
+            background: #3A3A38;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-family: verdana;
+
+        }
+          
+        #colorPicker {
+            height: 28px;
+            width: 28px;
+            cursor: pointer;
+        }
+          
+        #box {
+            outline: none;
+            border-radius: 50px;
+            height: 40px;
+            width: 120px;
+            padding: 0 10px;
+        }
+
+
+
 	</style>
 
 	<script type="text/javascript" canvas="canvas">
@@ -55,17 +238,61 @@
 				$container: $('#color-palette')
 			}
 
+			var sp = {
+				history: [],
+				options: [],
+				$container: $('#shade-palette')
+			}
+
+			var rc = {
+				history: ["#000000"],
+				options: [],
+				$container: $('#recent-colors')
+			}
+
 			function myCustomInteraction() {
 				var tool = new paper.Tool();
 
 				tool.onMouseDown = function (event) {
-				    var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
-				    if (hit) {
-				    		// Color pallette keeps track of the full history of colors, though we
-				    		// only color in with the most-recent color.
-				        hit.item.fillColor = cp.history[cp.history.length - 1];
-				    }
+					var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
+					if (hit) {
+							// Color pallette keeps track of the full history of colors, though we
+							// only color in with the most-recent color.
+						hit.item.fillColor = cp.history[cp.history.length - 1];
+						addToRecent(cp.history[cp.history.length - 1])
+					}
 				}
+			}
+
+			function showShades(color, alpha){
+				var rgb = color.replace(/[^\d,]/g, '').split(',');
+				sp.$container.html(" ");
+				for (var percent = 30; percent > -40; percent-=10) {
+					newrgb = colorShade(rgb, percent);
+					var $shade = $("<div>").css("background-color", 'rgba(' + newrgb[0] + ', ' + newrgb[1] + ', ' + newrgb[2] + ', ' + alpha + ')')
+									.addClass("shade");
+					$shade.click(function(){
+						// add color to the color palette history
+						cp.history.push($(this).css("background-color"));
+					});
+					sp.$container.append($shade);
+				}
+			}
+
+			function addToRecent(color){
+				var $swatch = $("<div>").css("background-color", color)
+									.addClass("swatch");
+				var count = rc.$container.children().length;
+				if (count > 9){
+					var firstEl = rc.$container.children().first();
+					firstEl.remove();
+				}
+				rc.$container.append($swatch);
+				$swatch.click(function(){
+					// add color to the color palette history
+					cp.history.push($(this).css("background-color"));
+					showShades(cp.history[cp.history.length - 1], 1);
+				});
 			}
 
 			// create a color palette with the given colors
@@ -74,10 +301,12 @@
 				// create a swatch for each color
 				for (var i = colors.length - 1; i >= 0; i--) {
 					var $swatch = $("<div>").css("background-color", colors[i])
-									   .addClass("swatch");
+									.addClass("swatch");
 					$swatch.click(function(){
 						// add color to the color palette history
-					  	cp.history.push($(this).css("background-color"));
+						cp.history.push($(this).css("background-color"));
+						sp.history.push($(this).css("background-color"));
+						showShades(cp.history[cp.history.length - 1], 1);
 					});
 					cp.$container.append($swatch);
 				}
@@ -95,19 +324,99 @@
 				});
 			}
 
+			function getColorsCreateRecent(){
+				rc.$container.html(" ");
+			}
+
+			function getColorsCreateShades(){
+				sp.$container.html(" ");
+			}
+
+			function colorShade(rgb, percent){
+				var R = rgb[0]
+				var G = rgb[1]
+				var B = rgb[2]
+
+				R = parseInt(R * (100 + percent) / 100);
+				G = parseInt(G * (100 + percent) / 100);
+				B = parseInt(B * (100 + percent) / 100);
+
+				R = (R<255)?R:255;  
+				G = (G<255)?G:255;  
+				B = (B<255)?B:255;  
+
+				return [R, G, B]
+			}
+
+			function opacitySliderChange(){
+				var slider = document.getElementById("myOpacityRange");
+				slider.oninput = function() {
+					var color = sp.history[sp.history.length - 1];
+					var $shade = $("<div>").css("background-color", color)
+									.addClass("shade");
+					showShades($shade.css("background-color"), slider.value/100);
+				}
+			}
+
+			function brightnessSliderChange(){
+				var slider = document.getElementById("myBrightnessRange");
+				slider.oninput = function() {
+					var color = sp.history[sp.history.length - 1];
+					var rgb = color.replace(/[^\d,]/g, '').split(',');
+					var hex = rgb.map(function(x){             //For each array element
+						x = parseInt(x).toString(16);      //Convert to a base16 string
+						return (x.length==1) ? "0"+x : x;  //Add zero if we get only one character
+					})
+					hex = hex.join("");
+					var $shade = $("<div>").css("background-color", increase_brightness(hex, slider.value))
+									.addClass("shade");
+					showShades($shade.css("background-color"), 1);
+				}
+			}
+
+			function increase_brightness(hex, percent){
+				var r = parseInt(hex.substr(0, 2), 16),
+					g = parseInt(hex.substr(2, 2), 16),
+					b = parseInt(hex.substr(4, 2), 16);
+
+				return '#' +
+				((0|(1<<8) + r + (256 - r) * percent / 200).toString(16)).substr(1) +
+				((0|(1<<8) + g + (256 - g) * percent / 200).toString(16)).substr(1) +
+				((0|(1<<8) + b + (256 - b) * percent / 200).toString(16)).substr(1);
+			}
+
+			function colorPickerChange(){
+				// Get the value return by color picker
+				var color = document.getElementById('colorPicker')
+				color.oninput = function() {
+					console.log(color.value);
+					// rgb = hexToRgb(color.value);
+					var $swatch = $("<div>").css("background-color", color.value).addClass("swatch");
+					cp.history.push($swatch.css("background-color"));
+					var $shade = $("<div>").css("background-color", color.value).addClass("shade");
+					sp.history.push($shade.css("background-color"));
+					showShades($shade.css("background-color"), 1);
+				}
+			}
+
 			function init(custom){
 				paper.setup(canvas);
 				getColorsCreatePalette();
+				getColorsCreateShades();
+				getColorsCreateRecent();
+				opacitySliderChange();
+				brightnessSliderChange();
+				colorPickerChange();
 
 				paper.project.importSVG(mandala.filePath, function(item) {
 					mandala.item = item._children["design-freepik"];
-				    paper.project.insertLayer(0,mandala.item);
+					paper.project.insertLayer(0,mandala.item);
 
-				    if (custom) {
-				    	myCustomInteraction();
-				    } else {
-				    	myGradientInteraction();
-				    }
+					if (custom) {
+						myCustomInteraction();
+					} else {
+						myGradientInteraction();
+					}
 
 				});
 			}
@@ -117,9 +426,72 @@
 		}
 	</script>
 </head>
-<body>
+<body style = "background-color: white;">
 
-	<canvas id="myCanvas" width="750px" height="750px"></canvas>
-	<div id="color-palette"></div>
+	<div class = "header">
+			<div class = "lefticons" style = "padding-top: 10px; padding-left: 10px; padding-right: 10px; ">
+				<img style = "height: 28px" src= "{% static 'coloring/images/save.png' %}">
+				<div>‏‏‎ ‎</div>
+				<img style = "height: 30px;" src= "{% static 'coloring/images/share.png' %}">
+				<div>‏‏‎   ‏‏‎ ‎‎</div>
+				<img style = "height: 30px;" src= "{% static 'coloring/images/competition.png' %}">
+				<div>‏‏‎ ‏‏‎   ‎‎</div>
+				<img style = "height: 30px;" src= "{% static 'coloring/images/settings.png' %}">
+			</div>
+	</div>
+	<!-- <div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;">  -->
+		<canvas id="myCanvas" width="750px" height="750px"></canvas>
+			<!-- <img style = "height: 300px" src= "{% static 'coloring/images/penguin.PNG' %}"> -->
+	<!-- </div>  -->
+
+	<!-- <div style = "in-line" -->
+		
+
+	<div class = "row" style = "background-color: #EBF5FF; height: 580px;"> 
+		<div style = "margin-left: 80px">
+		<div class = "row" style = "height: 50px;">
+			<div class = "col-1 heading" style = "display: inline-block; padding-bottom: 30px;">COLORS ‏‏‎ ‎‏‏‎ ‎‏‏‎‎
+				<div id="color-palette"></div>
+				<!-- <div class = "button" style = "margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div> -->
+		</div>
+			<hr class = "thinhr">
+		</div>
+		<div class = "row">
+			<div style = "height: 20px; background-color: #EBF5FF;"></div>
+			<div class = "col-6 heading" style = "text-align: center; display: inline-block; height: 0px; margin-top: 55px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
+				<div style = "background-color: #EBF5FF; display: inline-flex;" id="shade-palette"></div>
+				<!-- <button style = "margin-left: 600px; display: inline-block;" class="subheading button">+ C U S T O M‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎C O L O R</button> -->
+				<!-- <div class = "button" style = "display: inline-flex; margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div> -->
+			</div>
+			<div class = "row" style = "background-color: #EBF5FF; height: 78px;">
+				<div class = "heading button" style = "background-color: #EBF5FF; font-size: 18px; margin-top: 30px;  display: inline-block;">‏‏‎ ‎‏‏‎CUSTOM COLOR<input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div>
+			</div>
+			<div style = "height: 20px; background-color: #EBF5FF;"></div>
+ 
+			<hr class = "thinhr"> 
+		</div>
+		<div class = "row" style = "height: 30px;">
+			<div class = "col-1 heading" style = "display: inline-block;">BRIGHTNESS</div>
+			<div class= "slidecontainer" style = "display: inline-block;">
+				<input style = "display: inline-block;" type="range" min="1" max="100" value="50" class="slider" id="myBrightnessRange">
+			  </div> 
+		</div>
+		<div class = "row" style = "height: 70px; margin-bottom: 40px; margin-top: 10px">
+			<div class = "col-1 heading" style = "display: inline-block;">OPACITY</div> 
+			<div class= "slidecontainer" style = "margin-left: 42px; display: inline-block;">
+				<input type="range" min="1" max="100" value="50" class="slider" id="myOpacityRange">
+			  </div> 
+		</div>
+		<hr class = "hr">
+		<div class = "row" style = "height: 30px;">
+			<div class = "col-1 heading" style = "display: inline-block; padding: 20px 50px 50px;">RECENT COLORS</div> 
+			<div style = "padding-top: 10px; display: inline-flex" id="recent-colors"></div>
+		</div>
+		<!-- not sure where to put these -->
+    	<div id="recent-colors"></div>
+	</div>
+	</div>
+
+	<!-- <div id="color-palette"></div> -->
 </body>
 </html>
