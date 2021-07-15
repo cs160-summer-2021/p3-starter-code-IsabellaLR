@@ -70,11 +70,18 @@
 			font-family: 'Roboto', sans-serif;
 		}
 
-		.lefticons{
+		.righticons{
 			display: flex; 
 			align-items: flex-end;
 			height: 30px;
 			justify-content: flex-end;
+		}
+
+		.lefticons{
+			display: flex; 
+			align-items: flex-start;
+			height: 30px;
+			justify-content: flex-start;
 		}
 
 		.swatch {
@@ -399,6 +406,13 @@
 				}
 			}
 
+			// function eraserClicked(){
+			// 	//make color white to be like an eraser
+			// 	alert("eraser!!")
+			// 	var $swatch = $("<div>").css("background-color", 'rbg(255, 255, 255)').addClass("swatch");
+			// 	cp.history.push($("<div>").css("background-color", 'rbg(255, 255, 255)').addClass("swatch").css("background-color"));
+			// }
+
 			function init(custom){
 				paper.setup(canvas);
 				getColorsCreatePalette();
@@ -407,6 +421,7 @@
 				opacitySliderChange();
 				brightnessSliderChange();
 				colorPickerChange();
+				// eraserClicked();
 
 				paper.project.importSVG(mandala.filePath, function(item) {
 					mandala.item = item._children["design-freepik"];
@@ -429,15 +444,22 @@
 <body style = "background-color: white;">
 
 	<div class = "header">
-			<div class = "lefticons" style = "padding-top: 10px; padding-left: 10px; padding-right: 10px; ">
-				<img style = "height: 28px" src= "{% static 'coloring/images/save.png' %}">
+			<div class = "righticons" style = "padding-top: 10px; padding-left: 10px; padding-right: 10px; ">
+				<img onClick="eraserClicked()" id = "eraserButton" style = "height: 28px" src= "{% static 'coloring/images/save.png' %}">
 				<div>‏‏‎ ‎</div>
 				<img style = "height: 30px;" src= "{% static 'coloring/images/share.png' %}">
 				<div>‏‏‎   ‏‏‎ ‎‎</div>
-				<img style = "height: 30px;" src= "{% static 'coloring/images/competition.png' %}">
+				<a href="/coloring/competitions">
+					<img style = "height: 30px;" src= "{% static 'coloring/images/competition.png' %}">
+				</a>
 				<div>‏‏‎ ‏‏‎   ‎‎</div>
 				<img style = "height: 30px;" src= "{% static 'coloring/images/settings.png' %}">
 			</div>
+
+			<!-- <div class = "lefticons" style = "padding-top: 10px; padding-left: 10px; padding-right: 10px; ">
+				<img style = "height: 28px" src= "{% static 'coloring/images/save.png' %}">
+				<div>‏‏‎ ‎</div>
+			</div> -->
 	</div>
 	<!-- <div  style = "display: flex; justify-content: center; height: 350px; margin-top: 50px;">  -->
 		<canvas id="myCanvas" width="750px" height="750px"></canvas>
@@ -459,7 +481,7 @@
 		<div class = "row">
 			<div style = "height: 20px; background-color: #EBF5FF;"></div>
 			<div class = "col-6 heading" style = "text-align: center; display: inline-block; height: 0px; margin-top: 55px; padding-bottom: 30px; font-size: 18px;">‏‏‎SHADES‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
-				<div style = "background-color: #EBF5FF; display: inline-flex;" id="shade-palette"></div>
+				<div style = "background-color: transparent; display: inline-flex;" id="shade-palette"></div>
 				<!-- <button style = "margin-left: 600px; display: inline-block;" class="subheading button">+ C U S T O M‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎C O L O R</button> -->
 				<!-- <div class = "button" style = "display: inline-flex; margin-left: 50px; display: inline-block;">‏‏‎ ‎‏‏‎C U S T O M <input value="#1B83CF;" id="colorPicker" type="color"  style = "margin-left: 40px; display: inline-block;" class="body "></input></div> -->
 			</div>
